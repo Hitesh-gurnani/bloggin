@@ -21,7 +21,7 @@ export default function createblog({ user }) {
                     createdAt: serverTimestamp()
                 })
                 console.log(user.id);
-                M.toast({ html: 'Blog Created', classes: "green" })
+                M.toast({ html: 'News Created', classes: "green" })
             } catch (err) {
                 M.toast({ html: 'error creating blog', classes: "red" })
             }

@@ -10,7 +10,7 @@ export default function Home({ Allblogs }) {
     const res = await db.collection('blogs')
       .orderBy('createdAt', 'desc')
       .startAfter(new Date(last.createdAt))
-      .limit(3)
+      // .limit(4)
       .get()
     const newblogs = res.docs.map(docSnap => {
       return {
@@ -21,9 +21,9 @@ export default function Home({ Allblogs }) {
     })
     setblogs(blogs.concat(newblogs))
 
-    if (newblogs.length < 3) {
-      setEnd(true)
-    }
+    // if (newblogs.length < 4) {
+    //   setEnd(true)
+    // }
   }
   return (
     <div className="center" style={{ margin: '40px', padding: '40px' }}>
@@ -87,7 +87,7 @@ export default function Home({ Allblogs }) {
 
 export async function getServerSideProps(context) {
   const querySnap = await db.collection('blogs').orderBy('createdAt', "desc")
-    .limit(3)
+    // .limit(3)
     .get()
   const Allblogs = querySnap.docs.map(docSnap => {
     return {
